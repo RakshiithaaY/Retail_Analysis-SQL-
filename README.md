@@ -43,27 +43,82 @@ CREATE TABLE reatil_sales
 
 ### 2. Data Exploration & Cleaning
 
-- **Record Count**: Determine the total number of records in the dataset.
-- **Customer Count**: Find out how many unique customers are in the dataset.
-- **Category Count**: Identify all unique product categories in the dataset.
-- **Null Value Check**: Check for any null values in the dataset and delete records with missing data.
+--- DATA CLEANING---
 
+1. Query for LIMIT() funtion.
 ```sql
-SELECT COUNT(*) FROM retail_sales;
-SELECT COUNT(DISTINCT customer_id) FROM reatil_sales;
-SELECT DISTINCT category FROM reatil_sales;
-
 SELECT * FROM reatil_sales
-WHERE 
-    sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
-    gender IS NULL OR age IS NULL OR category IS NULL OR 
-    quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
+ LIMIT 20;
+```
+2. Query to find null values.
+```sql
+SELECT * FROM reatil_sales
+WHERE transactions_id IS NULL
+       OR 
+	   sale_date IS NULL
+	   OR
+	   sale_time IS NULL
+	   OR
+	   customer_id IS NULL
+	   OR
+	   gender IS NULL
+	   OR 
+	   age IS NULL
+	   OR 
+	   category IS NULL
+	   OR
+	   quantiy IS NULL
+	   OR
+	   price_per_unit IS NULL
+	   OR
+	   cogs IS NULL
+	   OR 
+	   total_sale IS NULL
+```
 
+3. Query to delete null values.
+```sql
 DELETE FROM reatil_sales
-WHERE 
-    sale_date IS NULL OR sale_time IS NULL OR customer_id IS NULL OR 
-    gender IS NULL OR age IS NULL OR category IS NULL OR 
-    quantity IS NULL OR price_per_unit IS NULL OR cogs IS NULL;
+WHERE transactions_id IS NULL
+       OR 
+	   sale_date IS NULL
+	   OR
+	   sale_time IS NULL
+	   OR
+	   customer_id IS NULL
+	   OR
+	   gender IS NULL
+	   OR 
+	   age IS NULL
+	   OR 
+	   category IS NULL
+	   OR
+	   quantiy IS NULL
+	   OR
+	   price_per_unit IS NULL
+	   OR
+	   cogs IS NULL
+	   OR 
+	   total_sale IS NULL;
+
+SELECT COUNT(*) FROM reatil_sales;
+```
+
+---DATA EXPLORATION---
+
+Q1. How many Sales we have?
+```sql
+SELECT COUNT(*) as total_sale FROM reatil_sales
+```
+
+--Q2. How many customers we have?
+```sql
+SELECT COUNT(DISTINCT customer_id)  as total_sale FROM reatil_sales
+```
+
+Q3. How many categories we have?
+```sql
+SELECT DISTINCT category FROM reatil_sales
 ```
 
 ### 3. Data Analysis & Findings
